@@ -11,11 +11,11 @@ export default function Navigation() {
     const [MobileWidth] = useMediaQuery('(max-width: 1000px)')
 
     return (
-        <Box position='fixed' left='0' right='0'>
+        <Box position='fixed' left='0' right='0' bgColor='white'>
             <UnorderedList listStyleType='none' p={MobileWidth ? '.9em' : '1.5em'}>
                 <HStack>
                     <Stack align='center'>
-                        <ListItem color='black' fontFamily='Open Sans' fontSize='2em' fontWeight='900'>
+                        <ListItem color='green.500' fontFamily='Open Sans' fontSize='2em' fontWeight='900'>
                             <NavLink>GONANA</NavLink>
                         </ListItem>
                     </Stack>
@@ -44,12 +44,12 @@ export function BottomNav() {
     return (
         <Box position='fixed' bottom='0' right='0' left='0'>
                 <Divider />
-            <HStack spacing='2em' justify='space-around' p='1em'>
-                <Icon boxSize='2em' as={BsGrid} />
-                <Icon boxSize='2em' as={FiShoppingBag} />
-                <Icon boxSize='2em' as={MdOutlineArticle} />
-                <Icon boxSize='2em' as={FiMessageCircle} />
-                <Icon boxSize='2em' as={BsFillCircleFill} />
+            <HStack spacing='2em' justify='space-around' p='1.8em'>
+                <Icon boxSize='2.5em' as={BsGrid} />
+                <Icon boxSize='2.5em' as={FiShoppingBag} />
+                <Icon boxSize='2.5em' as={MdOutlineArticle} />
+                <Icon boxSize='2.5em' as={FiMessageCircle} />
+                <Icon boxSize='2.5em' as={BsFillCircleFill} />
             </HStack>
         </Box>
     )
