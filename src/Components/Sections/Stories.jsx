@@ -14,9 +14,6 @@ export function Stories() {
                 <Avatar size={onMobile ? 'lg' : '2xl'} name='Dan Abrahmov' src={User3} />
                 <Avatar size={onMobile ? 'lg' : '2xl'} name='Dan Abrahmov' src={User1} />
                 <Avatar size={onMobile ? 'lg' : '2xl'} name='Dan Abrahmov' src={User2} />
-                <Avatar size={onMobile ? 'lg' : '2xl'} name='Dan Abrahmov' src={User3} />
-                <Avatar size={onMobile ? 'lg' : '2xl'} name='Dan Abrahmov' src={User3} />
-                <Avatar size={onMobile ? 'lg' : '2xl'} name='Dan Abrahmov' src={User1} />
             </HStack>
         </Box>
     )
