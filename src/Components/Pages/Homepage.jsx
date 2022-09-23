@@ -6,7 +6,7 @@ import { Stories } from '../Sections/Stories';
 export default function HomePage() {
     return (
         <VStack>
-            <Box>
+            <Box h='100vh'>
                 <Navigation />
                 <Stack mt='3.5em' align='start' justify='flex-start'>
                     <Stories />
