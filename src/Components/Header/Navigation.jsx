@@ -12,11 +12,12 @@ export function NavigationTemplate(props) {
     const [MobileWidth] = useMediaQuery('(max-width: 1000px)')
 
     return (
-        <Box position='fixed' left='0' right='0' bgColor='white'>
-            <UnorderedList listStyleType='none' p={MobileWidth ? '.9em' : '1.5em'}>
+        <Box position='fixed' left='0' right='0' bgColor='white' zIndex='5'>
+            <UnorderedList listStyleType='none' p={MobileWidth ? '.7em' : '1.5em'}>
                 <HStack>
                     <Stack align='center'>
-                        <ListItem color='green.500' fontFamily='Open Sans' fontSize='2em' fontWeight='900'>
+                        <ListItem ml='-.6em' color={props.headerColor} fontFamily='Open Sans'
+                            fontSize={props.headerSize} fontWeight='600'>
                             <NavLink>{props.NavHeader}</NavLink>
                         </ListItem>
                     </Stack>
@@ -43,7 +44,7 @@ export function NavigationTemplate(props) {
 
 export default function Navigation() {
     return (
-        <NavigationTemplate NavHeader='Gonana' icon1={<IoRocketOutline size='2em' />} icon2={<IoAddCircleOutline size='2em' />} />
+        <NavigationTemplate NavHeader='GONANA' headerSize='1.8em' headerColor='green' icon1={<IoRocketOutline size='2em' />} icon2={<IoAddCircleOutline size='2em' />} />
     )
 
 }
@@ -51,9 +52,9 @@ export default function Navigation() {
 
 export function BottomNav() {
     return (
-        <Box position='fixed' bottom='0' right='0' left='0' bgColor='white'>
+        <Box position='fixed' bottom='0' right='0' left='0' bgColor='white' zIndex='5'>
             <Divider />
-            <HStack spacing='2em' justify='space-around' p='1em'>
+            <HStack spacing='2em' justify='space-around' p='.7em'>
                 <NavLink to='/home'>
                     <Icon boxSize='2.5em' as={BsGrid} />
                 </NavLink>
@@ -63,7 +64,7 @@ export function BottomNav() {
                 <NavLink to='/orders'>
                     <Icon boxSize='2.5em' as={MdOutlineArticle} />
                 </NavLink>
-                <NavLink>
+                <NavLink to='/message'>
                     <Icon boxSize='2.5em' as={FiMessageCircle} />
                 </NavLink>
                 <NavLink>
