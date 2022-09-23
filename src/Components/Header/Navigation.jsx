@@ -51,16 +51,16 @@ export default function Navigation() {
 
 export function BottomNav() {
     return (
-        <Box position='fixed' bottom='0' right='0' left='0'>
+        <Box position='fixed' bottom='0' right='0' left='0' bgColor='white'>
             <Divider />
-            <HStack spacing='2em' justify='space-around' p='1.8em'>
+            <HStack spacing='2em' justify='space-around' p='1em'>
                 <NavLink to='/home'>
                     <Icon boxSize='2.5em' as={BsGrid} />
                 </NavLink>
-                <NavLink to='/orders'>
+                <NavLink to='/cart'>
                     <Icon boxSize='2.5em' as={FiShoppingBag} />
                 </NavLink>
-                <NavLink >
+                <NavLink to='/orders'>
                     <Icon boxSize='2.5em' as={MdOutlineArticle} />
                 </NavLink>
                 <NavLink>
