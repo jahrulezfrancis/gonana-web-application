@@ -67,7 +67,7 @@ function OrderTab() {
 export default function OrdersPage() {
     return (
         <Box>
-            <NavigationTemplate NavHeader='My Orders' />
+            <NavigationTemplate NavHeader='My Orders' headerColor='green' headerSize='1.7em'/>
             <Stack>
                 <OrderTab />
             </Stack>

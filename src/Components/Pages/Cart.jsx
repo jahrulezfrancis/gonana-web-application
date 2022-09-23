@@ -28,7 +28,7 @@ export default function CartPage() {
     return (
         <Box h='100vh'>
             <VStack>
-                <NavigationTemplate NavHeader='My Cart' />
+                <NavigationTemplate NavHeader='My Cart' headerColor='green' headerSize='1.7em' />
                 <Stack h='100%' align='center' justify='center' m='2em'>
                     <CartMessage />
                 </Stack>
