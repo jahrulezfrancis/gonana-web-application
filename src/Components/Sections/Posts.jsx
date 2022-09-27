@@ -1,4 +1,4 @@
-import { Box, Text, Image, HStack, Avatar, VStack, Icon } from "@chakra-ui/react";
+import { Box, Text, Image, HStack, Avatar, VStack, Icon, } from "@chakra-ui/react";
 import { Post } from "../DataBase/Post";
 import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
 
@@ -8,16 +8,10 @@ function CardTemplate(props) {
     const property = {
         imageUrl: 'https://bit.ly/2Z4KKcF',
         imageAlt: 'Rear view of modern home with pool',
-        beds: 3,
-        baths: 2,
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        formattedPrice: '$1,900.00',
-        reviewCount: 34,
-        rating: 4,
     }
 
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em'>
             <HStack p='1em'>
                 <Avatar name={props.userName} src="" />
                 <VStack spacing='-.1em'>
@@ -25,12 +19,12 @@ function CardTemplate(props) {
                     <Text>{new Date().toLocaleDateString()}</Text>
                 </VStack>
             </HStack>
-            <Box
+            <Box p='0em 1em'
                 mt='1'
                 fontWeight='semibold'
                 as='h4'
                 lineHeight='tight'
-                noOfLines={2}
+                noOfLines={3}
             >
                 {props.body}
             </Box>
@@ -56,13 +50,16 @@ function CardTemplate(props) {
 export default function PostCard() {
 
     return (
-        <Box>
+        <HStack wrap='wrap' justify='center' >
             {
                 Post.map((element) => {
-                    return <CardTemplate userName='Jahrulez' title={element.title} body={element.body} key={element.id} />
+                    return <Box>
+                        <CardTemplate userName='Jahrulez' title={element.title} body={element.body} key={element.id} />
+                    </Box>
+
                 })
             }
-        </Box>
+        </HStack>
     )
 }
 
