@@ -11,8 +11,10 @@ export default function HomePage() {
                 <Navigation />
                 <Stack mt='3.5em' align='start' justify='flex-start'>
                     <StoryPage />
-                    <PostCard />
                 </Stack>
+                <Box>
+                    <PostCard />
+                </Box>
                 <BottomNav />
             </Box>
         </VStack>
