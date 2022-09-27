@@ -1,6 +1,7 @@
 import { Box, Stack, VStack } from '@chakra-ui/react';
 import React from 'react';
 import Navigation, { BottomNav } from '../Header/Navigation';
+import PostCard from '../Sections/Posts';
 import StoryPage from '../Sections/Stories';
 
 export default function HomePage() {
@@ -10,6 +11,7 @@ export default function HomePage() {
                 <Navigation />
                 <Stack mt='3.5em' align='start' justify='flex-start'>
                     <StoryPage />
+                    <PostCard />
                 </Stack>
                 <BottomNav />
             </Box>
