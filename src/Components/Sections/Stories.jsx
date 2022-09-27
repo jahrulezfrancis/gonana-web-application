@@ -23,7 +23,10 @@ export function Stories() {
 
 export default function StoryPage() {
     return (
-        <VStack justify='start' align='start'>
+        <VStack justify='start' align='start' 
+        position='fixed' zIndex='2' bgColor='white'
+        top='10' right='0' left='0' bottom='78%'
+        >
             <Stories />
         </VStack>
     )
