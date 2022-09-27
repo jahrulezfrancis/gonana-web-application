@@ -1,7 +1,6 @@
-import { Box, Heading, Text, Image, Badge, HStack, Avatar, VStack } from "@chakra-ui/react";
-import { BsStars } from "react-icons/bs";
-
+import { Box, Text, Image, HStack, Avatar, VStack, Icon } from "@chakra-ui/react";
 import { Post } from "../DataBase/Post";
+import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
 
 
 
@@ -9,7 +8,6 @@ function CardTemplate(props) {
     const property = {
         imageUrl: 'https://bit.ly/2Z4KKcF',
         imageAlt: 'Rear view of modern home with pool',
-        
         beds: 3,
         baths: 2,
         title: 'Modern home in city center in the heart of historic Los Angeles',
@@ -39,41 +37,13 @@ function CardTemplate(props) {
             <Image src={property.imageUrl} alt={property.imageAlt} />
 
             <Box p='6'>
-                <Box display='flex' alignItems='baseline'>
-                    <Badge borderRadius='full' px='2' colorScheme='teal'>
-                        New
-                    </Badge>
-                    <Box
-                        color='gray.500'
-                        fontWeight='semibold'
-                        letterSpacing='wide'
-                        fontSize='xs'
-                        textTransform='uppercase'
-                        ml='2'
-                    >
-                        {property.beds} beds &bull; {property.baths} baths
-                    </Box>
-                </Box>
-
-
-                <Box>
-                    {property.formattedPrice}
-                    <Box as='span' color='gray.600' fontSize='sm'>
-                        / wk
-                    </Box>
-                </Box>
-
                 <Box display='flex' mt='2' alignItems='center'>
-                    {Array(5)
-                        .fill('')
-                        .map((_, i) => (
-                            <BsStars
-                                key={i}
-                                color={i < property.rating ? 'teal.500' : 'gray.300'}
-                            />
-                        ))}
                     <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                        {property.reviewCount} reviews
+                        <HStack spacing='3em'>
+                            <Icon as={MdFavoriteBorder} w={7} height={7} />
+                            <Icon as={MdModeComment} w={7} height={7} />
+                            <Icon as={MdShare} w={7} height={7} />
+                        </HStack>
                     </Box>
                 </Box>
             </Box>
@@ -84,7 +54,7 @@ function CardTemplate(props) {
 
 
 export default function PostCard() {
-  
+
     return (
         <Box>
             {
