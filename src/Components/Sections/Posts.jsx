@@ -4,12 +4,15 @@ import { Post } from "../DataBase/Post";
 import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
 
 
-
 function CardTemplate(props) {
     const property = {
         imageUrl: 'https://bit.ly/2Z4KKcF',
         imageAlt: 'Rear view of modern home with pool',
     }
+
+    const [likes] = useState(20)
+
+
     const [like, setlike] = useState(false);
     const HandleLikes = () => {
         if (like === false) {
@@ -19,7 +22,7 @@ function CardTemplate(props) {
         }
     }
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em'>
+        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em' top={"lg"}>
             <HStack p='1em'>
                 <Avatar name={props.userName} src="" />
                 <VStack spacing='-.1em'>
@@ -43,6 +46,9 @@ function CardTemplate(props) {
                     <Box as='span' ml='2' color='gray.600' fontSize='sm'>
                         <HStack spacing='3em'>
                             <Icon fill={like ? "red" : 'currentColor'} onClick={HandleLikes} as={MdFavoriteBorder} w={7} height={7} />
+                            <Text>
+                                {like ? likes + 1 : likes}
+                            </Text>
                             <Icon as={MdModeComment} w={7} height={7} />
                             <Icon as={MdShare} w={7} height={7} />
                         </HStack>
@@ -59,10 +65,10 @@ function CardTemplate(props) {
 
 export default function PostCard() {
     return (
-        <HStack wrap='wrap' justify='center' >
+        <HStack wrap='wrap' justify='center' mt='8em'>
             {
                 Post.map((element) => {
-                    return <Box>
+                    return <Box >
                         <CardTemplate userName='Jahrulez' title={element.title} body={element.body} key={element.id} />
                     </Box>
 
