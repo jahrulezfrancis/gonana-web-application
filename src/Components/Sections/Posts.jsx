@@ -1,4 +1,5 @@
 import { Box, Text, Image, HStack, Avatar, VStack, Icon, } from "@chakra-ui/react";
+import { useState } from "react";
 import { Post } from "../DataBase/Post";
 import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
 
@@ -9,7 +10,14 @@ function CardTemplate(props) {
         imageUrl: 'https://bit.ly/2Z4KKcF',
         imageAlt: 'Rear view of modern home with pool',
     }
-
+    const [like, setlike] = useState(false);
+    const HandleLikes = () => {
+        if (like === false) {
+            setlike(true)
+        } else {
+            setlike(false)
+        }
+    }
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em'>
             <HStack p='1em'>
@@ -34,7 +42,7 @@ function CardTemplate(props) {
                 <Box display='flex' mt='2' alignItems='center'>
                     <Box as='span' ml='2' color='gray.600' fontSize='sm'>
                         <HStack spacing='3em'>
-                            <Icon as={MdFavoriteBorder} w={7} height={7} />
+                            <Icon fill={like ? "red" : 'currentColor'} onClick={HandleLikes} as={MdFavoriteBorder} w={7} height={7} />
                             <Icon as={MdModeComment} w={7} height={7} />
                             <Icon as={MdShare} w={7} height={7} />
                         </HStack>
@@ -47,8 +55,9 @@ function CardTemplate(props) {
 
 
 
-export default function PostCard() {
 
+
+export default function PostCard() {
     return (
         <HStack wrap='wrap' justify='center' >
             {
