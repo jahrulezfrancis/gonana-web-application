@@ -13,12 +13,14 @@ export function StoryTemp(props) {
     )
 }
 
+
+
 export function Stories() {
     return (
         <HStack>
             {UsersDB.map((element) => {
                 return (
-                    <Box key={element.id}>
+                    <Box key={element.id} p='.5em' overflowX='auto'>
                         <StoryTemp name={element.username} Avatar={element.image} />
                     </Box>
                 )
