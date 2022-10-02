@@ -68,7 +68,7 @@ export default function PostCard() {
         <HStack wrap='wrap' justify='center' mt='8em'>
             {
                 Post.map((element) => {
-                    return <Box >
+                    return <Box key={element.id}>
                         <CardTemplate userName='Jahrulez' title={element.title} body={element.body} key={element.id} />
                     </Box>
 
