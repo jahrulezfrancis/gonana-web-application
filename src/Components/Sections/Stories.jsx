@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, HStack, Avatar, useMediaQuery, VStack } from '@chakra-ui/react';
-import { UsersDB } from '../DataBase/Users';
-
+import { ActiveUsers } from '../DataBase/Users';
 
 
 export function StoryTemp(props) {
@@ -18,10 +17,10 @@ export function StoryTemp(props) {
 export function Stories() {
     return (
         <HStack>
-            {UsersDB.map((element) => {
+            {ActiveUsers.map((element) => {
                 return (
                     <Box key={element.id} p='.5em' overflowX='auto'>
-                        <StoryTemp name={element.username} Avatar={element.image} />
+                        <StoryTemp name={element.username} Avatar={element.picture} />
                     </Box>
                 )
             })}
