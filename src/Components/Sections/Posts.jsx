@@ -1,7 +1,7 @@
 import { Box, Text, Image, HStack, Avatar, VStack, Icon, } from "@chakra-ui/react";
 import { useState } from "react";
-import { Post } from "../DataBase/Post";
 import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
+import { ActiveUsers } from "../DataBase/Users";
 
 
 function CardTemplate(props) {
@@ -15,17 +15,13 @@ function CardTemplate(props) {
 
     const [like, setlike] = useState(false);
     const HandleLikes = () => {
-        if (like === false) {
-            setlike(true)
-        } else {
-            setlike(false)
-        }
+        (!like ? setlike(true) : setlike(false))
     }
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em' top={"lg"}>
             <HStack p='1em'>
-                <Avatar name={props.userName} src="" />
-                <VStack spacing='-.1em'>
+                <Avatar name={props.Avatar} src="" />
+                <VStack align='start' spacing='-.1em'>
                     <Text>{props.userName}</Text>
                     <Text>{new Date().toLocaleDateString()}</Text>
                 </VStack>
@@ -61,15 +57,13 @@ function CardTemplate(props) {
 
 
 
-
-
 export default function PostCard() {
     return (
         <HStack wrap='wrap' justify='center' mt='8em'>
             {
-                Post.map((element) => {
+                ActiveUsers.map((element) => {
                     return <Box key={element.id}>
-                        <CardTemplate userName='Jahrulez' title={element.title} body={element.body} key={element.id} />
+                        <CardTemplate Avatar={element.picture} userName={element.name} title={element.title} body={element.postBody} />
                     </Box>
 
                 })
