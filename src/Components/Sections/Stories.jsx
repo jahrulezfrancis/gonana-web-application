@@ -6,7 +6,7 @@ import { ActiveUsers } from '../DataBase/Users';
 export function StoryTemp(props) {
     const [onMobile] = useMediaQuery('(max-width: 1000px)')
     return (
-        <Box h='200vh' w='100%' mt={onMobile ? '2em' : "3.5em"} alignItems='center'>
+        <Box w='100%' alignItems='center'>
             <Avatar size={onMobile ? 'md' : 'md'} name={props.name} src={props.Avatar} />
         </Box>
     )
@@ -16,10 +16,10 @@ export function StoryTemp(props) {
 
 export function Stories() {
     return (
-        <HStack>
+        <HStack w='100vw' overflowX='auto'>
             {ActiveUsers.map((element) => {
                 return (
-                    <Box key={element.id} p='.5em' overflowX='auto'>
+                    <Box key={element.id} p='.3em'>
                         <StoryTemp name={element.username} Avatar={element.picture} />
                     </Box>
                 )
@@ -32,7 +32,7 @@ export default function StoryPage() {
     return (
         <VStack justify='start' align='start'
             position='fixed' zIndex='2' bgColor='white'
-            top='10' right='0' left='0' bottom='75%'
+            top='4em' right='0' left='0' p='1em'
         >
             <Stories />
         </VStack>
