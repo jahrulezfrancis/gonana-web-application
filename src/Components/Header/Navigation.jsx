@@ -5,6 +5,7 @@ import { BsGrid, BsFillCircleFill } from "react-icons/bs"
 import { FiShoppingBag, FiMessageCircle } from "react-icons/fi"
 import { MdOutlineArticle } from "react-icons/md"
 import { NavLink } from 'react-router-dom';
+import { CreatePost } from '../Sections/CreatePost';
 
 
 
@@ -29,9 +30,7 @@ export function NavigationTemplate(props) {
                             </NavLink>
                         </ListItem>
                         <ListItem>
-                            <NavLink>
-                                {props.icon2}
-                            </NavLink>
+                                {<CreatePost />}
                         </ListItem>
                     </HStack>
                 </HStack>
