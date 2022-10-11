@@ -1,17 +1,33 @@
-import { IconButton, Icon, Input, useDisclosure } from "@chakra-ui/react";
+import { IconButton, Icon, Input, useDisclosure, Alert, AlertIcon, AlertTitle, AlertDescription, Textarea } from "@chakra-ui/react";
 import { Modal, Button, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, } from '@chakra-ui/react'
 import { IoRocketOutline } from "react-icons/io5";
 
+
+
+
+function DeleteWarning() {
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    return (
+        <>
+            <Alert isOpen={isOpen} status='error' onClose={onClose}>
+                <AlertIcon />
+                <AlertTitle>Your browser is outdated!</AlertTitle>
+                <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
+            </Alert>
+            <Button onClick={onOpen}>Alert Check</Button>
+            
+        </>
+    )
+}
 
 export function CreatePost() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
         <>
-        <IconButton>
-
-            <Icon as={IoRocketOutline} onClick={onOpen} />
-        </IconButton>
+            <IconButton onClick={onOpen} >
+                <Icon as={IoRocketOutline} />
+            </IconButton>
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -19,14 +35,16 @@ export function CreatePost() {
                     <ModalHeader>Create New Post</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Input type='text' />
+                        <Textarea placeholder='Post Body' />
                     </ModalBody>
 
                     <ModalFooter>
                         <Button colorScheme='blue' mr={3} onClick={onClose}>
                             Publish
                         </Button>
-                        <Button color='red' variant='ghost' onClick={onClose}>Discard</Button>
+                        <Button color='red' variant='ghost' onClick={() => {
+                            return (<DeleteWarning />)
+                        }}>Discard</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
