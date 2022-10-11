@@ -20,7 +20,7 @@ function CardTemplate(props) {
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em' top={"lg"}>
             <HStack p='1em'>
-                <Avatar name={props.Avatar} src="" />
+                <Avatar alignItems='center' name={props.name} src={props.AvatarImage} />
                 <VStack align='start' spacing='-.1em'>
                     <Text>{props.userName}</Text>
                     <Text>{new Date().toLocaleDateString()}</Text>
@@ -63,7 +63,7 @@ export default function PostCard() {
             {
                 ActiveUsers.map((element) => {
                     return <Box key={element.id}>
-                        <CardTemplate Avatar={element.picture} userName={element.name} title={element.title} body={element.postBody} />
+                        <CardTemplate name={element.name} AvatarImage={element.picture} userName={element.name} title={element.title} body={element.postBody} />
                     </Box>
 
                 })
