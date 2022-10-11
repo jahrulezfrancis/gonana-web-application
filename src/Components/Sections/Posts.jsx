@@ -33,7 +33,7 @@ function CardTemplate(props) {
                 lineHeight='tight'
                 noOfLines={3}
             >
-               <Text>{props.body}</Text>
+                {props.body}
             </Box>
             <Image src={property.imageUrl} alt={property.imageAlt} />
 
