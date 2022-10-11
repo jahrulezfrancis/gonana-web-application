@@ -6,8 +6,8 @@ import { StoryDB } from '../DataBase/Stories';
 export function StoryTemp(props) {
     const [onMobile] = useMediaQuery('(max-width: 1000px)')
     return (
-        <Box w='100%' alignItems='center'>
-            <Avatar size={onMobile ? 'md' : 'md'}  src={props.Avatar} />
+        <Box w='100%'>
+            <Avatar size={onMobile ? 'md' : 'md'} name={props.name} src={props.Avatar} />
         </Box>
     )
 }
