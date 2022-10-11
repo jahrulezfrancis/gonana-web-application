@@ -28,12 +28,12 @@ function CardTemplate(props) {
             </HStack>
             <Box p='0em 1em'
                 mt='1'
-                fontWeight='semibold'
-                as='h4'
+                fontWeight='normal'
+                as='p'
                 lineHeight='tight'
                 noOfLines={3}
             >
-                {props.body}
+               <Text>{props.body}</Text>
             </Box>
             <Image src={property.imageUrl} alt={property.imageAlt} />
 
@@ -59,7 +59,7 @@ function CardTemplate(props) {
 
 export default function PostCard() {
     return (
-        <HStack wrap='wrap' justify='center' mt='8em'>
+        <HStack wrap='wrap' justify='center' mt='6em'>
             {
                 ActiveUsers.map((element) => {
                     return <Box key={element.id}>
