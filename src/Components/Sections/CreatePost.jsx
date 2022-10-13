@@ -20,6 +20,11 @@ function DeleteWarning() {
     )
 }
 
+function FilePicker(){
+    
+        <Input placeholder="Choose file" type='file' />
+}
+
 export function CreatePost() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -36,6 +41,7 @@ export function CreatePost() {
                     <ModalCloseButton />
                     <ModalBody>
                         <Textarea placeholder='Post Body' />
+                       <Button onClick={() => { return  <Input placeholder="Choose file" type='file' /> }}>Select File</Button>
                     </ModalBody>
 
                     <ModalFooter>
