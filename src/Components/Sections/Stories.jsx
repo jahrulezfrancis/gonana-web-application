@@ -20,7 +20,7 @@ export function Stories() {
             {StoryDB.map((element) => {
                 return (
                     <Box key={element.id} p='.3em'>
-                        <StoryTemp name={element.author} Avatar={element.post_url} />
+                        <StoryTemp name={element.author} />
                     </Box>
                 )
             })}
