@@ -1,9 +1,9 @@
 import { Box, Divider, HStack, Icon, ListItem, Spacer, Stack, UnorderedList, useMediaQuery } from '@chakra-ui/react'
 import React from 'react'
-import { IoRocketOutline, IoAddCircleOutline } from "react-icons/io5";
+import { IoRocketOutline } from "react-icons/io5";
 import { BsGrid, BsFillCircleFill } from "react-icons/bs"
 import { FiShoppingBag, FiMessageCircle } from "react-icons/fi"
-import { MdOutlineArticle } from "react-icons/md"
+import { MdOutlineArticle, MdOutlineAddCircleOutline } from "react-icons/md"
 import { NavLink } from 'react-router-dom';
 import { CreatePost } from '../Sections/CreatePost';
 
@@ -30,7 +30,7 @@ export function NavigationTemplate(props) {
                             </NavLink>
                         </ListItem>
                         <ListItem>
-                                {<CreatePost />}
+                            {<CreatePost />}
                         </ListItem>
                     </HStack>
                 </HStack>
@@ -43,7 +43,7 @@ export function NavigationTemplate(props) {
 
 export default function Navigation() {
     return (
-        <NavigationTemplate NavHeader='GONANA' headerSize='1.8em' headerColor='green' icon1={<IoRocketOutline size='2em' />} icon2={<IoAddCircleOutline size='2em' />} />
+        <NavigationTemplate NavHeader='GONANA' headerSize='1.8em' headerColor='green' icon1={<IoRocketOutline size='2em' />} icon2={<MdOutlineAddCircleOutline size='2em' />} />
     )
 
 }
