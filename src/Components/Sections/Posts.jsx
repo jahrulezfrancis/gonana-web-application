@@ -1,13 +1,13 @@
 import { Box, Text, Image, HStack, Avatar, VStack, Icon, } from "@chakra-ui/react";
 import { useState } from "react";
 import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
+import CardImage from "../Images/veges-image.jpg"
 import { ActiveUsers } from "../DataBase/Users";
 
 
 function CardTemplate(props) {
     const property = {
-        imageUrl: 'https://bit.ly/2Z4KKcF',
-        imageAlt: 'Rear view of modern home with pool',
+               imageAlt: 'Rear view of modern home with pool',
     }
 
     const [likes] = useState(20)
@@ -35,7 +35,7 @@ function CardTemplate(props) {
             >
                 {props.body}
             </Box>
-            <Image src={property.imageUrl} alt={property.imageAlt} />
+            <Image src={CardImage} alt={property.imageAlt} />
 
             <Box p='6'>
                 <Box display='flex' mt='2' alignItems='center'>
