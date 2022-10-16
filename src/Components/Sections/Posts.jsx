@@ -9,10 +9,7 @@ function CardTemplate(props) {
     const property = {
                imageAlt: 'Rear view of modern home with pool',
     }
-
     const [likes] = useState(20)
-
-
     const [like, setlike] = useState(false);
     const HandleLikes = () => {
         (!like ? setlike(true) : setlike(false))
@@ -59,7 +56,7 @@ function CardTemplate(props) {
 
 export default function PostCard() {
     return (
-        <HStack wrap='wrap' justify='center' mt='6em'>
+        <HStack wrap='wrap' justify='center' mt='6em' mb='4em'>
             {
                 ActiveUsers.map((element) => {
                     return <Box key={element.id}>
