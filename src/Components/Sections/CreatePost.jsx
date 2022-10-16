@@ -21,9 +21,17 @@ export function CreatePost() {
     });
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [post, setPost] = useState('')
-    const [image, setImage] = useState(null);
+
+    function HandlePost(e) {
+        setPost(e.target.value)
+    }
+
+    const [image, setImage] = useState({
+        imgURL: ''
+    });
+
     const fileHandler = event => {
-        setImage(event.target.files[0].name)
+        setImage(image.imgURL = event.target.files[0])
         console.log(event.target.files)
     }
 
@@ -38,16 +46,17 @@ export function CreatePost() {
                 notify()
             }} >
                 <ModalOverlay />
-                <ModalContent>
+                <ModalContent w={'90vw'}>
                     <ModalHeader>Create New Post</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <Textarea placeholder="What's on your mind" />
+                        <Textarea onChange={HandlePost} value={post} placeholder="What's on your mind" />
                         <Input onChange={fileHandler} className="image-input" display='none' type='file' accept="image/*" id="image-picker" />
                         <label style={{ padding: '.4em' }} htmlFor="image-picker">
                             <Icon cursor='pointer' fontSize='3em' as={FcAddImage} />
                         </label>
-                       <Image src={image} />
+                        <Image src={image.imgURL} />
+                        <p>{post}</p>
                         <Stack>
                             <Button colorScheme='blue' mr={3} onClick={onClose}>
                                 Publish
