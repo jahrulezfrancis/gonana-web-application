@@ -1,26 +1,24 @@
 import React from 'react';
-import { Box, HStack, Avatar, useMediaQuery, VStack } from '@chakra-ui/react';
+import { Box, HStack, Avatar, useMediaQuery, } from '@chakra-ui/react';
 import { StoryDB } from '../DataBase/Stories';
 
 
-export function StoryTemp(props) {
-    const [onMobile] = useMediaQuery('(max-width: 1000px)')
+
+function StoryTemp(props) {
     return (
-        <Box w='100%'>
-            <Avatar size={onMobile ? 'md' : 'md'} name={props.name} src={props.Avatar} />
-        </Box>
+        <Avatar src={props.Avatar} />
     )
 }
 
 
-
 export function Stories() {
+    const [onMobile] = useMediaQuery('(max-width: 1000px)')
     return (
-        <HStack w='100vw' overflowX='auto'>
+        <HStack position='fixed' w='100vw' overflowX='auto' mt={onMobile ? '.5em' : '2.2em'} bg='#ffffff' p='1em' zIndex='2'>
             {StoryDB.map((element) => {
                 return (
-                    <Box key={element.id} p='.3em'>
-                        <StoryTemp name={element.author} />
+                    <Box key={element.id}>
+                        <StoryTemp Avatar={element.post_url} />
                     </Box>
                 )
             })}
@@ -28,15 +26,3 @@ export function Stories() {
     )
 }
 
-export default function StoryPage() {
-    const [mobileDevice] = useMediaQuery('(max-width: 1000px)')
-
-    return (
-        <VStack justify='start' align='start'
-            position='fixed' zIndex='2' bgColor='white'
-            top='4em' right='0' left='0' p={mobileDevice ? '.7em' : '2em'}
-        >
-            <Stories />
-        </VStack>
-    )
-}
