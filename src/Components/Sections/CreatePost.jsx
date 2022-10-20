@@ -1,10 +1,11 @@
 import { IconButton, Icon, Input, useDisclosure, Stack, Textarea, Image, } from "@chakra-ui/react";
 import { Modal, Button, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, } from '@chakra-ui/react'
 import { FcAddImage } from "react-icons/fc"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MdOutlineAddCircleOutline } from "react-icons/md"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaTrash } from "react-icons/fa";
 
 
 
@@ -21,19 +22,38 @@ export function CreatePost() {
     });
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [post, setPost] = useState('')
+    const [preview, setPreview] = useState()
 
     function HandlePost(e) {
         setPost(e.target.value)
     }
 
-    const [image, setImage] = useState({
-        imgURL: ''
-    });
-
-    const fileHandler = event => {
-        setImage(image.imgURL = event.target.files[0])
-        console.log(event.target.files)
+    function ImageHandler(e) {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file);
+        } else {
+            setImage(null)
+        }
+        console.log(e.target.files.length);
     }
+
+
+    const [image, setImage] = useState('');
+
+    useEffect(() => {
+        if (image) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result)
+            };
+            reader.readAsDataURL(image);
+        } else {
+            setPreview(null)
+        }
+
+    }, [image]);
+
 
     return (
         <>
@@ -51,11 +71,20 @@ export function CreatePost() {
                     <ModalCloseButton />
                     <ModalBody>
                         <Textarea onChange={HandlePost} value={post} placeholder="What's on your mind" />
-                        <Input onChange={fileHandler} className="image-input" display='none' type='file' accept="image/*" id="image-picker" />
+                        <Input onChange={ImageHandler} multiple className="image-input" display='none' type='file' accept="image/*" id="image-picker" />
                         <label style={{ padding: '.4em' }} htmlFor="image-picker">
                             <Icon cursor='pointer' fontSize='3em' as={FcAddImage} />
                         </label>
-                        <Image src={image.imgURL} />
+                        {[preview].map((newImage) => {
+                            return (
+                                (newImage) ?
+                                    <Stack key={newImage.name}>
+                                        <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
+                                        <Image width='210px' h='220px' p='1em' src={newImage} />
+                                    </Stack>
+                                    : null
+                            )
+                        })}
                         <p>{post}</p>
                         <Stack>
                             <Button colorScheme='blue' mr={3} onClick={onClose}>
