@@ -22,7 +22,7 @@ export function CreatePost() {
     });
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [post, setPost] = useState('')
-    const [preview, setPreview] = useState()
+    const [preview, setPreview] = useState('')
 
     function HandlePost(e) {
         setPost(e.target.value)
@@ -71,16 +71,18 @@ export function CreatePost() {
                     <ModalCloseButton />
                     <ModalBody>
                         <Textarea onChange={HandlePost} value={post} placeholder="What's on your mind" />
-                        <Input onChange={ImageHandler} multiple className="image-input" display='none' type='file' accept="image/*" id="image-picker" />
+                        <Input onChange={ImageHandler} multiple
+                            className="image-input"
+                            display='none' type='file' accept="image/*" id="image-picker" />
                         <label style={{ padding: '.4em' }} htmlFor="image-picker">
                             <Icon cursor='pointer' fontSize='3em' as={FcAddImage} />
                         </label>
                         {[preview].map((newImage) => {
                             return (
                                 (newImage) ?
-                                    <Stack key={newImage.name}>
+                                    <Stack>
                                         <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
-                                        <Image width='210px' h='220px' p='1em' src={newImage} />
+                                        <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
                                     </Stack>
                                     : null
                             )
