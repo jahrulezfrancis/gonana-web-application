@@ -3,7 +3,7 @@ import React from 'react'
 import { IoRocketOutline } from "react-icons/io5";
 import { BsGrid, BsFillCircleFill } from "react-icons/bs"
 import { FiShoppingBag, FiMessageCircle } from "react-icons/fi"
-import { MdOutlineArticle, MdOutlineAddCircleOutline } from "react-icons/md"
+import { MdOutlineAddCircleOutline, MdOutlineArticle } from "react-icons/md"
 import { NavLink } from 'react-router-dom';
 import { CreatePost } from '../Sections/CreatePost';
 
@@ -14,7 +14,7 @@ export function NavigationTemplate(props) {
 
     return (
         <Box position='fixed' left='0' right='0' bgColor='white' zIndex='5'>
-            <UnorderedList listStyleType='none' p={MobileWidth ? '.7em' : '1.5em'}>
+            <UnorderedList listStyleType='none' p={MobileWidth ? '.7em' : '1em'}>
                 <HStack>
                     <Stack align='center'>
                         <ListItem ml='-.6em' color={props.headerColor} fontFamily='Open Sans'
@@ -53,7 +53,7 @@ export function BottomNav() {
     return (
         <Box position='fixed' bottom='0' right='0' left='0' bgColor='white' zIndex='5'>
             <Divider />
-            <HStack spacing='2em' justify='space-around' p='.7em'>
+            <HStack h='4em' spacing='2em' align='center' justify='space-around' p='.5em'>
                 <NavLink to='/home'>
                     <Icon boxSize='2.5em' as={BsGrid} />
                 </NavLink>
