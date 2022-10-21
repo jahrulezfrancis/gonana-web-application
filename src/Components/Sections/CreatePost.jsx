@@ -1,4 +1,4 @@
-import { IconButton, Icon, Input, useDisclosure, Stack, Textarea, Image, } from "@chakra-ui/react";
+import { IconButton, Icon, Input, useDisclosure, VStack, Stack, Textarea, Image, } from "@chakra-ui/react";
 import { Modal, Button, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, } from '@chakra-ui/react'
 import { FcAddImage } from "react-icons/fc"
 import { useState, useEffect } from "react";
@@ -22,7 +22,7 @@ export function CreatePost() {
     });
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [post, setPost] = useState('')
-    const [preview, setPreview] = useState('')
+    const [preview, setPreview] = useState([])
 
     function HandlePost(e) {
         setPost(e.target.value)
@@ -77,16 +77,20 @@ export function CreatePost() {
                         <label style={{ padding: '.4em' }} htmlFor="image-picker">
                             <Icon cursor='pointer' fontSize='3em' as={FcAddImage} />
                         </label>
-                        {[preview].map((newImage) => {
-                            return (
-                                (newImage) ?
-                                    <Stack>
-                                        <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
-                                        <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
-                                    </Stack>
-                                    : null
-                            )
-                        })}
+                        {
+                            [preview].map((newImage) => {
+                                return (
+                                    (newImage) ?
+                                        <VStack>
+                                            <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
+                                            <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
+                                            <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
+                                        </VStack>
+                                        : null
+                                )
+                            })
+                        }
+
                         <p>{post}</p>
                         <Stack>
                             <Button colorScheme='blue' mr={3} onClick={onClose}>
