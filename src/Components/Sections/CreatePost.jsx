@@ -22,7 +22,7 @@ export function CreatePost() {
     });
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [post, setPost] = useState('')
-    const [preview, setPreview] = useState([])
+    const [preview, setPreview] = useState({})
 
     function HandlePost(e) {
         setPost(e.target.value)
@@ -81,9 +81,8 @@ export function CreatePost() {
                             [preview].map((newImage) => {
                                 return (
                                     (newImage) ?
-                                        <VStack p='1em'>
+                                        <VStack p='1em' key={newImage.name}>
                                             <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
-                                            <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
                                             <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
                                         </VStack>
                                         : null
@@ -91,7 +90,7 @@ export function CreatePost() {
                             })
                         }
 
-                        <p>{post}</p>
+                        {/* <p>{post}</p> */}
                         <Stack>
                             <Button colorScheme='blue' mr={3} onClick={onClose}>
                                 Publish
