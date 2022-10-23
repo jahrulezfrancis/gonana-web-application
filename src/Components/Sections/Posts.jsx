@@ -7,7 +7,7 @@ import { ActiveUsers } from "../DataBase/Users";
 
 function CardTemplate(props) {
     const property = {
-               imageAlt: 'Rear view of modern home with pool',
+        imageAlt: 'Rear view of modern home with pool',
     }
     const [likes] = useState(20)
     const [like, setlike] = useState(false);
@@ -16,7 +16,7 @@ function CardTemplate(props) {
     }
     return (
         <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em' top={"lg"}>
-            <HStack p='1em'>
+            <HStack p='1em' key={props.key}>
                 <Avatar alignItems='center' name={props.name} src={props.AvatarImage} />
                 <VStack align='start' spacing='-.1em'>
                     <Text>{props.userName}</Text>
@@ -59,10 +59,11 @@ export default function PostCard() {
         <HStack wrap='wrap' justify='center' mt='6em' mb='4em'>
             {
                 ActiveUsers.map((element) => {
-                    return <Box key={element.id}>
-                        <CardTemplate name={element.name} AvatarImage={element.picture} userName={element.name} title={element.title} body={element.postBody} />
-                    </Box>
-
+                    return (
+                        <Box key={element.id}>
+                            <CardTemplate key={element.id} name={element.name} AvatarImage={element.picture} userName={element.name} title={element.title} body={element.postBody} />
+                        </Box>
+                    )
                 })
             }
         </HStack>
