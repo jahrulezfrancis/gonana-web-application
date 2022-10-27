@@ -81,16 +81,14 @@ export function CreatePost() {
                             [preview].map((newImage) => {
                                 return (
                                     (newImage) ?
-                                        <VStack p='1em' key={newImage.name}>
+                                        <VStack p='1em' key={newImage.name} minH='500px'>
                                             <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
-                                            <Image key={newImage.name} width='210px' h='220px' p='1em' src={newImage} />
+                                            <Image key={newImage.name} width='100%' h='500px' p='1em' src={newImage} />
                                         </VStack>
                                         : null
                                 )
                             })
                         }
-
-                        {/* <p>{post}</p> */}
                         <Stack>
                             <Button colorScheme='blue' mr={3} onClick={onClose}>
                                 Publish
