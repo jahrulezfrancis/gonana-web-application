@@ -83,7 +83,7 @@ export function CreatePost() {
                                     (newImage) ?
                                         <VStack p='1em' key={newImage.name} minH='500px'>
                                             <Icon cursor='pointer' onClick={() => { setImage(null) }} m='.2em' fill='red' color='red' as={FaTrash} />
-                                            <Image key={newImage.name} width='100%' h='500px' p='1em' src={newImage} />
+                                            <Image key={newImage.name} width='500px' h='500px' p='1em' src={newImage} />
                                         </VStack>
                                         : null
                                 )
