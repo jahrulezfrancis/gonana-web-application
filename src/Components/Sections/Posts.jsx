@@ -60,7 +60,7 @@ export default function PostCard() {
             {
                 ActiveUsers.map((element) => {
                     return (
-                        <Box key={element.id}>
+                        <Box>
                             <CardTemplate key={element.id} name={element.name} AvatarImage={element.picture} userName={element.name} title={element.title} body={element.postBody} />
                         </Box>
                     )
