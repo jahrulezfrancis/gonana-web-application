@@ -6,6 +6,8 @@ import { MdOutlineAddCircleOutline } from "react-icons/md"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaTrash } from "react-icons/fa";
+import { ActiveUsers } from "../DataBase/Users";
+
 
 
 
@@ -90,7 +92,10 @@ export function CreatePost() {
                             })
                         }
                         <Stack>
-                            <Button colorScheme='blue' mr={3} onClick={onClose}>
+                            <Button colorScheme='blue' mr={3} onClick={() => {
+                                ActiveUsers[0].name.pop()
+                                // onclose()
+                            }}>
                                 Publish
                             </Button>
                         </Stack>
