@@ -3,9 +3,23 @@ import { useState } from "react";
 import { MdFavoriteBorder, MdModeComment, MdShare } from "react-icons/md"
 import CardImage from "../Images/veges-image.jpg"
 import { ActiveUsers } from "../DataBase/Users";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 function CardTemplate(props) {
+    const UserToast = () => toast.info("You can't view profile yet, this feature will soon be available", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
     const property = {
         imageAlt: 'Rear view of modern home with pool',
     }
@@ -15,40 +29,43 @@ function CardTemplate(props) {
         (!like ? setlike(true) : setlike(false))
     }
     return (
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em' top={"lg"}>
-            <HStack p='1em' key={props.key}>
-                <Avatar alignItems='center' name={props.name} src={props.AvatarImage} />
-                <VStack align='start' spacing='-.1em'>
-                    <Text>{props.userName}</Text>
-                    <Text>{new Date().toLocaleDateString()}</Text>
-                </VStack>
-            </HStack>
-            <Box p='0em 1em'
-                mt='1'
-                fontWeight='normal'
-                as='p'
-                lineHeight='tight'
-                noOfLines={3}
-            >
-                {props.body}
-            </Box>
-            <Image src={CardImage} alt={property.imageAlt} />
+        <>
+            <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden' m='1em .5em' p='.5em' top={"lg"}>
+                <HStack p='1em' key={props.key}>
+                    <Avatar cursor='pointer' alignItems='center' name={props.name} src={props.AvatarImage} />
+                    <VStack align='start' spacing='-.1em'>
+                        <Text onClick={UserToast} cursor='pointer'>{props.userName}</Text>
+                        <Text>{new Date().toLocaleDateString()}</Text>
+                    </VStack>
+                </HStack>
+                <Box p='0em 1em'
+                    mt='1'
+                    fontWeight='normal'
+                    as='p'
+                    lineHeight='tight'
+                    noOfLines={3}
+                >
+                    {props.body}
+                </Box>
+                <Image src={CardImage} alt={property.imageAlt} />
 
-            <Box p='6'>
-                <Box display='flex' mt='2' alignItems='center'>
-                    <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                        <HStack spacing='3em'>
-                            <Icon fill={like ? "red" : 'currentColor'} onClick={HandleLikes} as={MdFavoriteBorder} w={7} height={7} />
-                            <Text>
-                                {like ? likes + 1 : likes}
-                            </Text>
-                            <Icon as={MdModeComment} w={7} height={7} />
-                            <Icon as={MdShare} w={7} height={7} />
-                        </HStack>
+                <Box p='6'>
+                    <Box display='flex' mt='2' alignItems='center'>
+                        <Box as='span' ml='2' color='gray.600' fontSize='sm'>
+                            <HStack spacing='3em'>
+                                <Icon fill={like ? "red" : 'currentColor'} onClick={HandleLikes} as={MdFavoriteBorder} w={7} height={7} />
+                                <Text>
+                                    {like ? likes + 1 : likes}
+                                </Text>
+                                <Icon as={MdModeComment} w={7} height={7} />
+                                <Icon as={MdShare} w={7} height={7} />
+                            </HStack>
+                        </Box>
                     </Box>
                 </Box>
             </Box>
-        </Box>
+            <ToastContainer />
+        </>
     )
 }
 
